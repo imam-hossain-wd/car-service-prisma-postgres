@@ -27,7 +27,7 @@ const updateUserZodSchema = z.object({
     }),
   });
 
-export const AuthValidation = {
+export const UserValidation = {
   createUserZodSchema,
   updateUserZodSchema,
 };
