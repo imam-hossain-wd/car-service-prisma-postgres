@@ -6,6 +6,7 @@ import httpStatus from 'http-status';
 
 import cookieParser from 'cookie-parser';
 import router from './app/routes';
+import globalErrorHandler from './app/middlewares/globalErrorHandler';
 
 const app: Application = express();
 
@@ -17,6 +18,8 @@ app.use(express.urlencoded({ extended: true }));
 
 
 app.use('/api/v1', router)
+//global error handler middleware
+app.use(globalErrorHandler)
 
 app.use('/api/v1',(req: Request, res: Response, next: NextFunction) => {
   res.send("<h1>Welcome To Car service server</h1>")
