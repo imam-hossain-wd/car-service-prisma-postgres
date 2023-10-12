@@ -9,7 +9,7 @@ datasource db {
 }
 
 model User {
-  id        Int       @id @default(autoincrement())
+  id        String       @id @default(uuid())
   email     String    @unique
   password  String
   firstName String
@@ -20,7 +20,7 @@ model User {
 }
 
 model Service {
-  id           Int       @id @default(autoincrement())
+  id           String      @id @default(uuid())
   name         String
   description  String
   price        Float
@@ -30,9 +30,9 @@ model Service {
 }
 
 model Booking {
-  id        Int      @id @default(autoincrement())
-  userId    Int
-  serviceId Int
+  id        String      @id @default(uuid())
+  userId    String
+  serviceId String
   date      DateTime
   status    String
   user      User     @relation(fields: [userId], references: [id])
@@ -40,9 +40,9 @@ model Booking {
 }
 
 model Review {
-  id        Int     @id @default(autoincrement())
-  userId    Int
-  serviceId Int
+  id        String    @id @default(uuid())
+  userId    String
+  serviceId String
   rating    Int
   content   String
   user      User    @relation(fields: [userId], references: [id])
@@ -50,7 +50,7 @@ model Review {
 }
 
 model Admin {
-  id        Int    @id @default(autoincrement())
+  id        String     @id @default(uuid())
   email     String @unique
   password  String
   firstName String
