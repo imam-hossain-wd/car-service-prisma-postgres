@@ -9,7 +9,9 @@ const validationRequest_1 = __importDefault(require("../../middlewares/validatio
 const service_validation_1 = require("./service.validation");
 const service_controller_1 = require("./service.controller");
 const router = (0, express_1.Router)();
-router.post('/create', (0, validationRequest_1.default)(service_validation_1.ServiceValidation.createServiceZodSchema), service_controller_1.serviceController.createService);
+router.post('/create', 
+// validateRequest(ServiceValidation.createServiceZodSchema),
+service_controller_1.serviceController.createService);
 router.get('/', service_controller_1.serviceController.getAllServices);
 router.get('/:id', service_controller_1.serviceController.getService);
 router.patch('/:id', (0, validationRequest_1.default)(service_validation_1.ServiceValidation.updateServiceZodSchema), service_controller_1.serviceController.updateService);

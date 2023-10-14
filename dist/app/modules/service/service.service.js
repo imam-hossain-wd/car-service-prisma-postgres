@@ -15,6 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.service = void 0;
 const prisma_1 = __importDefault(require("../../../shared/prisma"));
 const createService = (data) => __awaiter(void 0, void 0, void 0, function* () {
+    console.log(data, 'service data');
     const result = yield prisma_1.default.service.create({
         data,
     });

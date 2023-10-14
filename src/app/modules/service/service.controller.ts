@@ -16,7 +16,10 @@ const createService: RequestHandler = catchAsync(async (req, res) => {
     });
   });
 const getAllServices: RequestHandler = catchAsync(async (req, res) => {
-    const result = await service.getAllService();
+  const limit = req.query.limit as string;
+  console.log(limit);
+
+    const result = await service.getAllService(limit);
     sendResponse(res, {
       statusCode: httpStatus.OK,
       success: true,

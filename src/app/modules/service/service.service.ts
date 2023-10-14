@@ -4,6 +4,7 @@ import prisma from "../../../shared/prisma";
 
 
 const createService = async (data: Service): Promise<Service> => {
+  console.log(data, 'service data');
     const result = await prisma.service.create({
       data,
     });

@@ -7,7 +7,7 @@ import { serviceController } from "./service.controller";
 const router = Router();
 
 router.post('/create', 
-validateRequest(ServiceValidation.createServiceZodSchema),
+// validateRequest(ServiceValidation.createServiceZodSchema),
 serviceController.createService)
 router.get('/', serviceController.getAllServices)
 router.get('/:id', serviceController.getService)
