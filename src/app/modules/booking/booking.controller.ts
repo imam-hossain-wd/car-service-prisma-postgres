@@ -3,6 +3,8 @@ import catchAsync from "../../../shared/catchAsync";
 import sendResponse from "../../../shared/sendResponse";
 import httpStatus from "http-status";
 import { bookingService } from "./booking.service";
+import { BookingFilterableFields } from "./booking.constants";
+import pick from "../../../shared/pick";
 
 
 const createBooking: RequestHandler = catchAsync(async (req, res) => {
@@ -16,7 +18,11 @@ const createBooking: RequestHandler = catchAsync(async (req, res) => {
     });
   });
 const getBooking: RequestHandler = catchAsync(async (req, res) => {
-    const result = await bookingService.getAllBooking();
+
+  const filters = pick(req.query,BookingFilterableFields);
+  const options = pick(req.query, ['size', 'page', 'sortBy', 'sortOrder']);
+
+    const result = await bookingService.getAllBooking(filters,options);
     sendResponse(res, {
       statusCode: httpStatus.OK,
       success: true,

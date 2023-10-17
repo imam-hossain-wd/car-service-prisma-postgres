@@ -8,7 +8,7 @@ import { adminController } from "./admin.controller";
 const router = Router();
 
 router.post('/create', 
-validateRequest(AdminValidation.createAdminZodSchema),
+// validateRequest(AdminValidation.createAdminZodSchema),
 adminController.createAdmin)
 router.get('/', adminController.getAllAdmin)
 router.get('/:id', adminController.getSingleAdmin)

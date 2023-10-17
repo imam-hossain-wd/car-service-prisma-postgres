@@ -29,14 +29,16 @@ model Service {
   reviews      Review[]
 }
 
+
+
 model Booking {
-  id        String  @id @default(uuid())
-  userId    String
-  serviceId String
-  date      String
-  status    String
-  user      User    @relation(fields: [userId], references: [id])
-  service   Service @relation(fields: [serviceId], references: [id])
+  id          String  @id @default(uuid())
+  bookingName String  @default("")
+  userId      String
+  serviceId   String
+  date        String
+  user        User    @relation(fields: [userId], references: [id])
+  service     Service @relation(fields: [serviceId], references: [id])
 }
 
 model Review {
@@ -50,12 +52,19 @@ model Review {
 }
 
 model Admin {
-  id        String @id @default(uuid())
-  email     String @unique
-  password  String
-  role      String @default("admin")
-  firstName String
-  lastName  String
+  id                String     @id @default(uuid())
+  firstName          String
+  middleName         String
+  lastName           String
+  gender             String
+  email              String
+  contactNo          String
+  emergencyContactNo String
+  bloodGroup         String
+  designation         String
+  presentAddress     String
+  permanentAddress   String
+  password String
 }
 model SuperAdmin {
   id        String @id @default(uuid())

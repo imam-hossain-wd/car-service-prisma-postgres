@@ -8,7 +8,7 @@ import { bookingcontroller } from "./booking.controller";
 const router = Router();
 
 router.post('/create', 
-validateRequest(BookingValidation.createBookingZodSchema),
+// validateRequest(BookingValidation.createBookingZodSchema),
 bookingcontroller.createBooking)
 router.get('/', bookingcontroller.getBooking)
 router.get('/:id', bookingcontroller.getSingleBooking)

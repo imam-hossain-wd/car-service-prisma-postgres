@@ -30,8 +30,7 @@ const login = async (data: ILogin):Promise<ILoginResponse | undefined> => {
       email
     }
   })
-
-
+  
   if (isSuperAdminExit && isSuperAdminExit?.password !== password) {
     throw new ApiError(httpStatus.UNAUTHORIZED, 'Password is incorrect');
   }
