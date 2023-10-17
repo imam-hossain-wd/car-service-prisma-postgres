@@ -7,9 +7,16 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum Gender {
+  male
+  female
+}
+
 model User {
   id        String    @id @default(uuid())
   email     String    @unique
+  contactNo String    @default("") 
+  gender    Gender    @default(male) 
   password  String
   firstName String
   lastName  String
@@ -23,13 +30,11 @@ model Service {
   name         String
   description  String
   price        Float
-  imageUrl     String @default("") @map("image_url")
+  imageUrl     String    @default("") @map("image_url")
   availability Boolean
   bookings     Booking[]
   reviews      Review[]
 }
-
-
 
 model Booking {
   id          String  @id @default(uuid())
@@ -52,7 +57,7 @@ model Review {
 }
 
 model Admin {
-  id                String     @id @default(uuid())
+  id                 String @id @default(uuid())
   firstName          String
   middleName         String
   lastName           String
@@ -61,11 +66,12 @@ model Admin {
   contactNo          String
   emergencyContactNo String
   bloodGroup         String
-  designation         String
+  designation        String
   presentAddress     String
   permanentAddress   String
-  password String
+  password           String
 }
+
 model SuperAdmin {
   id        String @id @default(uuid())
   email     String @unique

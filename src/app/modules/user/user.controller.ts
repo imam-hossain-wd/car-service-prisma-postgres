@@ -3,6 +3,8 @@ import catchAsync from "../../../shared/catchAsync";
 import { userService } from "./user.service";
 import sendResponse from "../../../shared/sendResponse";
 import httpStatus from "http-status";
+import pick from "../../../shared/pick";
+import { UserFilterableFields } from "./user.constants";
 
 
 const createUser: RequestHandler = catchAsync(async (req, res) => {
@@ -16,7 +18,12 @@ const createUser: RequestHandler = catchAsync(async (req, res) => {
     });
   });
 const getUsers: RequestHandler = catchAsync(async (req, res) => {
-    const result = await userService.getAllusers();
+
+  const filters = pick(req.query,UserFilterableFields);
+  const options = pick(req.query, ['size', 'page', 'sortBy', 'sortOrder']);
+  // console.log(options, 'controller options..');
+  // console.log(filters);
+    const result = await userService.getAllusers(filters,options);
     sendResponse(res, {
       statusCode: httpStatus.OK,
       success: true,

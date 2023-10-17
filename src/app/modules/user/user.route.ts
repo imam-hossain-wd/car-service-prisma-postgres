@@ -8,7 +8,7 @@ import { ENUM_USER_ROLE } from "../../../enums/user";
 const router = Router();
 
 router.post('/create', 
-// validateRequest(UserValidation.createUserZodSchema),
+validateRequest(UserValidation.createUserZodSchema),
 usercontroller.createUser)
 
 router.get('/',
