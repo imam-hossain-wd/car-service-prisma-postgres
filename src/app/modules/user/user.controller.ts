@@ -9,6 +9,7 @@ import { UserFilterableFields } from "./user.constants";
 
 const createUser: RequestHandler = catchAsync(async (req, res) => {
     const data = req.body;
+    console.log(data, 'user data');
     const result = await userService.createUser(data);
     sendResponse(res, {
       statusCode: httpStatus.OK,
@@ -21,8 +22,6 @@ const getUsers: RequestHandler = catchAsync(async (req, res) => {
 
   const filters = pick(req.query,UserFilterableFields);
   const options = pick(req.query, ['size', 'page', 'sortBy', 'sortOrder']);
-  // console.log(options, 'controller options..');
-  // console.log(filters);
     const result = await userService.getAllusers(filters,options);
     sendResponse(res, {
       statusCode: httpStatus.OK,

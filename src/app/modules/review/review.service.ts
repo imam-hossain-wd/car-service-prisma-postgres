@@ -10,8 +10,12 @@ const createReview = async (data: Review): Promise<Review> => {
     return result;
   };
 
-  const getAllReviews = async ():Promise<Review[] | null> => {
-    const result = await prisma.review.findMany();
+  const getAllReviews = async (): Promise<Review[] | null> => {
+    const result = await prisma.review.findMany({
+      include: {
+        user: true,
+      },
+    });
     return result;
   };
   const getSingleReview = async (id:string):Promise<Review | null> => {

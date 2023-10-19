@@ -20,6 +20,7 @@ model User {
   password  String
   firstName String
   lastName  String
+  userImage String  @default("")
   role      String    @default("user")
   bookings  Booking[]
   reviews   Review[]
@@ -30,7 +31,7 @@ model Service {
   name         String
   description  String
   price        Float
-  imageUrl     String    @default("") @map("image_url")
+  imageUrl     String    @map("image_url")
   availability Boolean
   bookings     Booking[]
   reviews      Review[]
@@ -51,7 +52,7 @@ model Review {
   userId    String
   serviceId String
   rating    Int
-  content   String
+  comment   String
   user      User    @relation(fields: [userId], references: [id])
   service   Service @relation(fields: [serviceId], references: [id])
 }

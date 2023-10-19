@@ -1,7 +1,5 @@
 import { z } from 'zod';
 
-
-
 const createReviewZodSchema = z.object({
   body: z.object({
     userId: z.string({
@@ -14,8 +12,8 @@ const createReviewZodSchema = z.object({
     rating: z.number({
       required_error: 'rating is required',
     }),
-    content: z.string({
-      required_error: 'content is required',
+    comment: z.string({
+      required_error: 'comment is required',
     }),
   }),
 });

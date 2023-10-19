@@ -12,7 +12,7 @@ validateRequest(UserValidation.createUserZodSchema),
 usercontroller.createUser)
 
 router.get('/',
-auth(ENUM_USER_ROLE.ADMIN,ENUM_USER_ROLE.SUPER_ADMIN,ENUM_USER_ROLE.USER),
+// auth(ENUM_USER_ROLE.ADMIN,ENUM_USER_ROLE.SUPER_ADMIN,ENUM_USER_ROLE.USER),
 usercontroller.getUsers)
 
 router.get('/:id', usercontroller.getUser)

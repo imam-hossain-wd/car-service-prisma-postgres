@@ -5,8 +5,17 @@ const createUserZodSchema = z.object({
     email: z.string({
       required_error: 'email is required',
     }),
+    contactNo: z.string({
+      required_error: 'contactNo is required',
+    }),
+    gender: z.string({
+      required_error: 'gender is required',
+    }),
     password: z.string({
       required_error: 'password is required',
+    }),
+    userImage: z.string({
+      required_error: 'userImage is required',
     }),
 
     firstName: z.string({

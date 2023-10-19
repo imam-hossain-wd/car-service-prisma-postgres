@@ -8,6 +8,7 @@ import { reviewService } from "./review.service";
 
 const createReview: RequestHandler = catchAsync(async (req, res) => {
     const data = req.body;
+    console.log(data);
     const result = await reviewService.createReview(data);
     sendResponse(res, {
       statusCode: httpStatus.OK,
